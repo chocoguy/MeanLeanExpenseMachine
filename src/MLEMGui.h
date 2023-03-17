@@ -89,11 +89,11 @@ class ExpensesPanel : public wxPanel
 
 	protected:
 		wxStaticText* m_staticText3;
-		wxButton* btnEditExpense;
+		wxButton* btnAddExpense;
 		wxGrid* grdExpenses;
 
 		// Virtual event handlers, override them in your derived class
-		virtual void evtBtnEditExpense_Click( wxCommandEvent& event ) { event.Skip(); }
+		virtual void evtBtnAddExpense_Click( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:
@@ -101,6 +101,30 @@ class ExpensesPanel : public wxPanel
 		ExpensesPanel( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 960,540 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxT("Expenses") );
 
 		~ExpensesPanel();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class BudgetsPanel
+///////////////////////////////////////////////////////////////////////////////
+class BudgetsPanel : public wxPanel
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText4;
+		wxButton* btnAddBudget;
+		wxGrid* grdBudgets;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void evtBtnAddBudget_Click( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		BudgetsPanel( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 960,540 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxT("Budgets") );
+
+		~BudgetsPanel();
 
 };
 

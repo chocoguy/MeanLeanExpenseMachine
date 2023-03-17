@@ -110,12 +110,12 @@ ExpensesPanel::ExpensesPanel( wxWindow* parent, wxWindowID id, const wxPoint& po
 
 	bSizer3->Add( m_staticText3, 0, wxALIGN_CENTER_HORIZONTAL|wxTOP, 20 );
 
-	btnEditExpense = new wxButton( this, wxID_ANY, wxT("Add"), wxDefaultPosition, wxDefaultSize, 0|wxBORDER_NONE );
-	btnEditExpense->SetFont( wxFont( 10, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
-	btnEditExpense->SetForegroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_BTNTEXT ) );
-	btnEditExpense->SetBackgroundColour( wxColour( 138, 201, 38 ) );
+	btnAddExpense = new wxButton( this, wxID_ANY, wxT("Add"), wxDefaultPosition, wxDefaultSize, 0|wxBORDER_NONE );
+	btnAddExpense->SetFont( wxFont( 10, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+	btnAddExpense->SetForegroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_BTNTEXT ) );
+	btnAddExpense->SetBackgroundColour( wxColour( 138, 201, 38 ) );
 
-	bSizer3->Add( btnEditExpense, 0, wxALIGN_RIGHT|wxRIGHT, 120 );
+	bSizer3->Add( btnAddExpense, 0, wxALIGN_RIGHT|wxRIGHT, 120 );
 
 	grdExpenses = new wxGrid( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
 
@@ -172,12 +172,83 @@ ExpensesPanel::ExpensesPanel( wxWindow* parent, wxWindowID id, const wxPoint& po
 	this->Layout();
 
 	// Connect Events
-	btnEditExpense->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ExpensesPanel::evtBtnEditExpense_Click ), NULL, this );
+	btnAddExpense->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ExpensesPanel::evtBtnAddExpense_Click ), NULL, this );
 }
 
 ExpensesPanel::~ExpensesPanel()
 {
 	// Disconnect Events
-	btnEditExpense->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ExpensesPanel::evtBtnEditExpense_Click ), NULL, this );
+	btnAddExpense->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ExpensesPanel::evtBtnAddExpense_Click ), NULL, this );
+
+}
+
+BudgetsPanel::BudgetsPanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxString& name ) : wxPanel( parent, id, pos, size, style, name )
+{
+	this->SetBackgroundColour( wxColour( 43, 54, 76 ) );
+
+	wxBoxSizer* bSizer4;
+	bSizer4 = new wxBoxSizer( wxVERTICAL );
+
+	m_staticText4 = new wxStaticText( this, wxID_ANY, wxT("Budgets"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText4->Wrap( -1 );
+	m_staticText4->SetFont( wxFont( 18, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+	m_staticText4->SetForegroundColour( wxColour( 255, 255, 255 ) );
+
+	bSizer4->Add( m_staticText4, 0, wxALIGN_CENTER_HORIZONTAL|wxTOP, 20 );
+
+	btnAddBudget = new wxButton( this, wxID_ANY, wxT("Add"), wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
+	btnAddBudget->SetFont( wxFont( 10, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+	btnAddBudget->SetForegroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_BTNTEXT ) );
+	btnAddBudget->SetBackgroundColour( wxColour( 138, 201, 38 ) );
+
+	bSizer4->Add( btnAddBudget, 0, wxALIGN_RIGHT|wxRIGHT, 235 );
+
+	grdBudgets = new wxGrid( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
+
+	// Grid
+	grdBudgets->CreateGrid( 5, 6 );
+	grdBudgets->EnableEditing( false );
+	grdBudgets->EnableGridLines( false );
+	grdBudgets->EnableDragGridSize( false );
+	grdBudgets->SetMargins( 0, 0 );
+
+	// Columns
+	grdBudgets->EnableDragColMove( false );
+	grdBudgets->EnableDragColSize( true );
+	grdBudgets->SetColLabelValue( 0, wxT("Name") );
+	grdBudgets->SetColLabelValue( 1, wxT("Saved Amt") );
+	grdBudgets->SetColLabelValue( 2, wxT("Target Amt") );
+	grdBudgets->SetColLabelValue( 3, wxT("Added") );
+	grdBudgets->SetColLabelValue( 4, wxT("Edited") );
+	grdBudgets->SetColLabelValue( 5, wxT("Goal Met") );
+	grdBudgets->SetColLabelAlignment( wxALIGN_LEFT, wxALIGN_CENTER );
+
+	// Rows
+	grdBudgets->EnableDragRowSize( true );
+	grdBudgets->SetRowLabelSize( 0 );
+	grdBudgets->SetRowLabelAlignment( wxALIGN_CENTER, wxALIGN_CENTER );
+
+	// Label Appearance
+	grdBudgets->SetLabelBackgroundColour( wxColour( 255, 255, 255 ) );
+	grdBudgets->SetLabelTextColour( wxSystemSettings::GetColour( wxSYS_COLOUR_BTNTEXT ) );
+
+	// Cell Defaults
+	grdBudgets->SetDefaultCellBackgroundColour( wxColour( 255, 255, 255 ) );
+	grdBudgets->SetDefaultCellTextColour( wxColour( 111, 111, 111 ) );
+	grdBudgets->SetDefaultCellAlignment( wxALIGN_LEFT, wxALIGN_TOP );
+	bSizer4->Add( grdBudgets, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+
+
+	this->SetSizer( bSizer4 );
+	this->Layout();
+
+	// Connect Events
+	btnAddBudget->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( BudgetsPanel::evtBtnAddBudget_Click ), NULL, this );
+}
+
+BudgetsPanel::~BudgetsPanel()
+{
+	// Disconnect Events
+	btnAddBudget->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( BudgetsPanel::evtBtnAddBudget_Click ), NULL, this );
 
 }
