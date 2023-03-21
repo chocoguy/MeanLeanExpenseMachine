@@ -25,6 +25,8 @@
 #include <wx/panel.h>
 #include <wx/button.h>
 #include <wx/grid.h>
+#include <wx/textctrl.h>
+#include <wx/listbox.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -125,6 +127,60 @@ class BudgetsPanel : public wxPanel
 		BudgetsPanel( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 960,540 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxT("Budgets") );
 
 		~BudgetsPanel();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class FunFactsPanel
+///////////////////////////////////////////////////////////////////////////////
+class FunFactsPanel : public wxPanel
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText5;
+		wxStaticText* m_staticText7;
+		wxStaticText* lblTotalMoneySpent;
+		wxStaticText* m_staticText9;
+		wxStaticText* lblPlaceMostSpentAt;
+		wxStaticText* m_staticText11;
+		wxStaticText* lblCatMostSpentAt;
+		wxStaticText* m_staticText13;
+		wxStaticText* lblDumbPurchaseCount;
+
+	public:
+
+		FunFactsPanel( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 960,540 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxT("Fun Facts") );
+
+		~FunFactsPanel();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class SettingsPanel
+///////////////////////////////////////////////////////////////////////////////
+class SettingsPanel : public wxPanel
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText15;
+		wxStaticText* m_staticText16;
+		wxStaticText* m_staticText18;
+		wxTextCtrl* m_textCtrl1;
+		wxButton* m_button3;
+		wxButton* m_button4;
+		wxTextCtrl* m_textCtrl2;
+		wxButton* m_button5;
+		wxButton* m_button6;
+		wxListBox* m_listBox1;
+		wxListBox* m_listBox2;
+
+	public:
+
+		SettingsPanel( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 960,540 ), long style = wxTAB_TRAVERSAL, const wxString& name = wxT("Settings") );
+
+		~SettingsPanel();
 
 };
 

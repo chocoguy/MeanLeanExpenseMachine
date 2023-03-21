@@ -24,8 +24,10 @@ find_package(wxWidgets CONFIG REQUIRED)
 add_executable (MeanLeanExpenseMachine
 	src/MeanLeanExpenseMachine.cpp
 	src/MeanLeanExpenseMachine.h
-	
-	        "src/menu.h" "src/menu.cpp")
+	"src/menu.h" 
+	"src/menu.cpp" 
+	"src/MLEMGui.cpp"
+	"src/MLEMGui.h" "src/MainScreen.cpp" "src/MainScreen.h")
 
 
 target_link_libraries(MeanLeanExpenseMachine PRIVATE wx::core wx::base)
